@@ -10,21 +10,21 @@ def get_db():
                          username='root', 
                          password='pass',
                         authSource="admin")
-    db = client["animal_db"]
+    db = client["task_db"]
     return db
 
 @app.route('/')
 def ping_server():
-    return "Welcome to the world of animals."
+    return "Welcome to the NamG taskmaster."
 
-@app.route('/animals')
-def get_stored_animals():
+@app.route('/tasks')
+def get_stored_tasks():
     db=""
     try:
         db = get_db()
-        _animals = db.animal_tb.find()
-        animals = [{"id": animal["id"], "name": animal["name"], "type": animal["type"]} for animal in _animals]
-        return jsonify({"animals": animals})
+        _tasks = db.task_db.find()
+        tasks = [{"task": task["task"], "result": task["result"]} for task in _tasks]
+        return jsonify({"tasks": tasks})
     except:
         pass
     finally:
@@ -33,3 +33,4 @@ def get_stored_animals():
 
 if __name__=='__main__':
     app.run(host="0.0.0.0", port=5000)
+

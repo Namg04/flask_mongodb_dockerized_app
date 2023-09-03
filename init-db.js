@@ -1,20 +1,11 @@
-db = db.getSiblingDB("animal_db");
-db.animal_tb.drop();
+db = db.getSiblingDB("task_db");
+db.task_db.drop();
 
-db.animal_tb.insertMany([
+db.task_db.insertMany([
     {
-        "id": 1,
-        "name": "Lion",
-        "type": "wild"
+        "task": "Task1",
+        "result": "completed",
+
     },
-    {
-        "id": 2,
-        "name": "Cow",
-        "type": "domestic"
-    },
-    {
-        "id": 3,
-        "name": "Tiger",
-        "type": "wild"
-    },
+    
 ]);
